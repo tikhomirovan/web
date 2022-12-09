@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ 
+</head>
+
+<body>
+ 
+      <form action="#test.php" method="post" id="f1">
+        <p title="Логин: английские буквы в любом регистре, подчеркивание и дефис">Логин: <input  id="login" name="login" type="text" onKeyUp="check('login', reg_login)" title="Логин: английские буквы в любом регистре, подчеркивание и дефис" /></p>
+        <p title="Имя: русские буквы в любом регистре">Имя: <input id="name" name="name" type="text" onKeyUp="check('name', reg_name)" title="Имя: русские буквы в любом регистре" /></p>
+        <p title="Дата: 2021-01-31">Дата: <input id="date" name="date" type="text" onKeyUp="check('date', reg_date)" title="Дата: 2021-01-31" /></p>
+        <p title="Пароль: английские буквы в любом регистре, цифры, знаки: +*_- и точка">Пароль: <input id="pass" name="pass" type="password" onKeyUp="check('pass', reg_pass)" title="Пароль: английские буквы в любом регистре, цифры, знаки: +*_- и точка" /></p>
+      </form>
+  
+
+  <script>
+    let reg_login = /^[a-z_-]{3,10}$/i;
+    let reg_name = /^[а-яё]{3,10}$/i;
+    let reg_date = /^(202[0-9])-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/;
+    let reg_pass = /^[\w\.+*_-]{6,20}$/i;
+
+    /*
+    Дата: 2021-01-31
+    Логин: английские буквы в любом регистре, подчеркивание и дефис
+    Имя: русские буквы в любом регистре
+    Пароль: английские буквы в любом регистре, цифры, знаки: +*_- и точка 
+    */
+
+    function check(id, reg) { //функция проверки полей, принимает значение id поля и регулярное выражение для него
+      let st = document.getElementById(id);
+      let v = document.getElementById(id).value;
+
+
+      if (reg.test(v)) {
+        st.style.border = '1px solid green';
+        return true;
+      }
+      else {
+
+        st.style.border = '1px solid red';
+        return false;
+
+
+      }
+    }
+    
+  </script>
+</body>
+
+</html>
